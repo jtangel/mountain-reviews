@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <title>User's Climbs</title>
+</head>
+<body>
+    <h1 class="title">Mountain Reviews</h1>
+    <div class="topnav">
+        <h2>Welcome, {{user.user_name}}!</h2>
+    </div>
+    <div class="nav">
+        <a href="/user_dashboard">Go Home</a>
+        <a href="/user_climbs/{{user.id}}">My Climbs</a>
+        <a href="/logout">Logout</a>
+    </div>
+    <h1 id="climb_header"> {{user.user_name}}'s climbs</h1>
+    <table class="climbs_table">
+        <thead>
+            <tr>
+                <td>Route Name</td>
+                <td>Route Location</td>
+                <td>Route Rating</td>
+                <td>Route Description</td>
+                <td>Route Details</td>
+            </tr>
+        </thead>
+        <tbody>
+            {% for climb in climbs %}
+            <tr>
+                <td><a href="/details/{{climb.climb_specific.id}}">{{climb.name}}</a></td>
+                <td>{{climb.location}}</td>
+                <td>{{climb.rating}}</td>
+                <td>{{climb.description}}</td>
+                <td><a href="/details/{{climb.climb_specific.id}}">View</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

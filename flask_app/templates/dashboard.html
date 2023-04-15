@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <title>Dashboard</title>
+</head>
+<body>
+    <h1 class="title">Mountain Reviews</h1>
+    <div class="topnav">
+        <h2>Welcome, {{user.user_name}}!</h2>
+    </div>
+    <div class="nav">
+        <a href="/user_climbs/{{user.id}}">My Climbs</a>
+        <a href="/logout">Logout</a>
+    </div>
+    <div class="dashboard">
+        <div class="form">
+            <form action="/add_climb" method="post">
+                <h2>Add A Climb</h2>
+                <label for="name">Route Name</label>
+                <input type="text" name="name" class="add_climb_form">
+                <label for="location">Climb Location</label>
+                <input type="text" name="location" class="add_climb_form">
+                <label for="description">Description</label>
+                <input type="text" name="description" class="add_climb_form">
+                <label for="rating">Rating (out of five)</label>
+                <input type="number" name="rating" class="add_climb_form">
+                <input type="hidden" name="posted_by" value={{user.id}}>
+                <input type="submit" value="Add Climb">
+            </form>
+            {% with messages = get_flashed_messages(category_filter=['climb']) %}
+            {% if messages %}
+                    {% for message in messages %}
+                    <p class="flash_message">{{message}}</p>
+                    {% endfor %}
+            </div>
+            {% endif %}
+            {% endwith %}
+        </div>
+        <div class="list">
+            <h2>All Climbs</h2>
+            {% for climb in climbs %}
+            <p><a href="/details/{{climb.id}}">{{climb.name}}</a> -  {{climb.rating}} star route</p>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>

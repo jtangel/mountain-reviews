@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <title>Edit Climb</title>
+</head>
+<body>
+    <div class="form_update">
+        <form action="/update_climb/{{climb.id}}" method="post">
+            <h2>Update Form For:  {{climb.name}}</h2>
+            <label for="name">Route Name</label>
+            <input type="hidden" value="{{climb.id}}">
+            <input type="text" name="name" class="add_climb_form" value="{{climb.name}}">
+            <label for="location">Climb Location</label>
+            <input type="text" name="location" class="add_climb_form" value="{{climb.location}}">
+            <label for="description">Description</label>
+            <input type="text" name="description" class="add_climb_form" value="{{climb.description}}">
+            <label for="rating">Rating (out of five)</label>
+            <input type="number" name="rating" class="add_climb_form" value="{{climb.rating}}">
+            <input type="hidden" name="posted_by" value={{user.id}}>
+            <input type="submit" value="Update Route" id="update">
+        </form>
+    </div>
+</body>
+</html>

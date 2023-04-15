@@ -1,0 +1,182 @@
+*{
+    background-color: lightgreen;
+    color: #5C4033;
+}
+
+.container {
+    display: flex;
+    justify-content: space-around;
+}
+
+.register {
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+}
+
+.login {
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+}
+
+.login_register {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    background-color: wheat;
+}
+
+input[type=submit] {
+    width: 20%;
+    background-color: #5C4033;
+    color: white;
+    cursor: pointer;
+}
+
+.title {
+    text-align: center;
+    font-size: 35pt;
+    font-style: italic;
+    font-weight: bold;
+    
+}
+
+.welcome {
+    margin: 0 auto;
+    text-align: center;
+    width: 80%;
+}
+
+.topnav {
+    width: 90%;
+    padding: 10px;
+    margin: 0 auto;
+    border-bottom: 2px solid black;
+    text-align: center;
+}
+
+.nav {
+    width: 90%;
+    padding: 10px;
+    margin: 0 auto;
+    border-bottom: 2px solid black;
+    display: flex;
+    justify-content: space-between;
+}
+
+.add_climb_form {
+    width: 100%;
+    height: 80%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    background-color: wheat;
+}
+
+.dashboard {
+    display: flex;
+    justify-content: space-around;
+}
+
+.form {
+    width: 40%;
+    border: 2px solid #5C4033;
+    margin: 20px;
+    padding: 10px;
+    height: 80%;
+}
+
+.detail_page {
+    margin: 40px;
+    padding-bottom: 25px;
+    text-align: center;
+    border-bottom: 2px solid #5C4033;
+}
+
+.form_update {
+    margin: 0 auto;
+    padding: 50px;
+    width: 75%;
+}
+
+#update {
+    margin-top: 25px;
+}
+
+#climbed_button {
+    display: flex;
+    justify-content: center;
+}
+
+#button {
+    width: 250px;
+    height: 30px;
+}
+
+.comment_form {
+    width: 80%;
+    margin: 0 auto;
+    text-align: center;
+    border-bottom: 2px solid #5C4033;
+}
+
+.comment_form input {
+    margin: 20px;
+}
+
+.comments {
+    width: 80%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.comment_card {
+    width: 25%;
+    border: 2px solid #5C4033;
+    background-color: wheat;
+    margin: 0 auto;
+    margin-top: 15px;
+    padding: 5px;
+}
+
+.comment_card h4, .comment_card p, .comment_card a {
+    background-color: wheat;
+}
+
+.climbs_table td, .climbs_table a {
+    background-color: wheat;
+    text-align: center;
+    
+}
+
+.climbs_table {
+    margin: 0 auto;
+    width: 80%;
+}
+
+.climbs_table tr {
+    height: 60px;
+}
+
+#climb_header {
+    text-align: center;
+}
+
+.list, .list a, .list p, .list h2{
+    background-color: wheat;
+}
+
+.list {
+    margin-top: 20px;
+    width: 40%;
+    height: 80%;
+    text-align: center;
+}

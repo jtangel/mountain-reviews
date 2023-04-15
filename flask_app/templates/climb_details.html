@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <title>Climb Details</title>
+</head>
+<body>
+    <h1 class="title">Mountain Reviews</h1>
+    <div class="topnav">
+        <h2>Welcome, {{user.user_name}}!</h2>
+    </div>
+    <div class="nav">
+        <a href="/user_dashboard">Go Home</a>
+        <a href="/user_climbs/{{user.id}}">My Climbs</a>
+        <a href="/logout">Logout</a>
+    </div>
+    <div class="detail_page">
+        <div class="climb_details">
+            <h1>{{climb.name}}</h1>
+            <h4>{{climb.location}}</h4>
+            <p>{{climb.rating}} star route - {{climb.description}}</p>
+        </div>
+        <p>Posted By: {{climb.climber.user_name}}</p>
+        {% if climb.posted_by == session['user_id'] %}
+        <a href="/climb_edit_form/{{climb.id}}">Edit Climb Details</a>
+        <p> | </p>
+        <a href="/delete/climb/{{climb.id}}">Delete</a>
+        {% endif %}
+        <br>
+        <br>
+        {% if session['user_id'] in check_climb %}
+        <p>(You have climbed this route. Leave a comment and tell others how it went!)</p>
+        {% endif %}
+        {% if session['user_id'] not in check_climb %}
+        <div id="climbed_button">
+            <form id="climbed_form" action="/add_to_user_climbs" method="post">
+                <input type="hidden" value="{{user.id}}" name="user_id">
+                <input type="hidden" value="{{climb.id}}" name="climb_id">
+                <input type="submit" value="Mark Route As Climbed" id="button">
+            </form>
+        </div>
+        {% endif %}
+    </div>
+    <div class="comment_form">
+        <h2>Comment Your Thoughts</h2>
+        <form action="/add_comment" method="post">
+            <label for="comment">Comment</label>
+            <input type="text" name="comment" class="add_climb_form">
+            <input type="hidden" name="user_id" value="{{user.id}}">
+            <input type="hidden" name="climb_id" value="{{climb.id}}">
+            <input type="submit" value="Comment">
+        </form>
+        {% with messages = get_flashed_messages(category_filter=['comment']) %}
+        {% if messages %}
+                {% for message in messages %}
+                <p class="flash_message">{{message}}</p>
+                {% endfor %}
+        {% endif %}
+        {% endwith %}
+    </div>
+    <div class="comments">
+        <h2>Comments</h2>
+        {% for comment in comments %}
+        <div class="comment_card">
+            <h4>{{comment.posted_by.user_name}}</h4>
+            <p>{{comment.comment}}</p>
+            {% if comment.user_id == session['user_id'] %}
+            <a href="/delete/comment/{{climb.id}}/{{comment.id}}">Delete</a>
+            {% endif %}
+        </div>
+        {% endfor %}
+    </div>
+</body>
+</html>

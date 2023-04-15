@@ -51,4 +51,4 @@ def show_dashboard():
 @app.route('/logout')
 def logout():
     session.clear()
-    return redirect('/')
+    return redirect("/")
